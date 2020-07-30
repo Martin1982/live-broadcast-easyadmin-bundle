@@ -24,8 +24,5 @@ class LiveBroadcastEasyadminBundle extends Bundle
     public function build(ContainerBuilder $container): void
     {
         parent::build($container);
-        $container->addCompilerPass(new AddStreamOutputPass());
-        $container->addCompilerPass(new AddStreamInputPass());
-        $container->addCompilerPass(new AddChannelApiPass());
     }
 }
