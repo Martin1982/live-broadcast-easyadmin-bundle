@@ -15,15 +15,15 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 return static function (ContainerConfigurator $container) {
     $container->services()
         ->set('livebroadcast.controller.dashboard', DashboardController::class)
+        ->tag('controller.service_arguments')
         ->public()
-        ->autowire()
 
         ->set('livebroadcast.controller.channel_crud', AbstractChannelCrudController::class)
+        ->tag('controller.service_arguments')
         ->public()
-        ->autowire()
 
         ->set('livebroadcast.controller.live_broadcast_crud', LiveBroadcastCrudController::class)
+        ->tag('controller.service_arguments')
         ->public()
-        ->autowire()
     ;
 };
