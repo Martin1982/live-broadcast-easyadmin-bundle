@@ -19,11 +19,9 @@ return static function (ContainerConfigurator $container) {
         ->public()
 
         ->set('livebroadcast.controller.channel_crud', AbstractChannelCrudController::class)
-        ->tag('controller.service_arguments')
         ->public()
 
         ->set('livebroadcast.controller.live_broadcast_crud', LiveBroadcastCrudController::class)
-        ->tag('controller.service_arguments')
         ->public()
     ;
 };
