@@ -13,17 +13,15 @@ use Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin\LiveBroadcastCrudCo
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $container) {
-    $container->services()
-        ->set('livebroadcast.controller.dashboard', DashboardController::class)
-        ->call('setContainer', ['@service_container'])
-        ->public()
+    $services = $container->services();
 
-        ->set('livebroadcast.controller.channel_crud', AbstractChannelCrudController::class)
-        ->call('setContainer', ['@service_container'])
-        ->public()
+    $services->defaults()
+        ->autowire()
+        ->autoconfigure();
 
-        ->set('livebroadcast.controller.live_broadcast_crud', LiveBroadcastCrudController::class)
-        ->call('setContainer', ['@service_container'])
-        ->public()
-    ;
+    $services->load('Martin1982\\LiveBroadcastEasyadminBundle\\', '../../*')
+        ->exclude('../../{DependencyInjection,Entity,Tests,Resources,LiveBroadcastEasyadminBundle.php}');
+
+    $services->load('Martin1982\\LiveBroadcastEasyadminBundle\\Controller\\', '../../Controller')
+        ->tag('controller.service_arguments');
 };
