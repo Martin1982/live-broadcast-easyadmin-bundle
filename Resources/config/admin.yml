@@ -5,9 +5,9 @@ services:
     autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
   Martin1982\LiveBroadcastEasyAdminBundle\:
-    resource: '../src/*'
-    exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+    resource: '../*'
+    exclude: '../{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
   Martin1982\LiveBroadcastEasyAdminBundle\Controller\:
-    resource: '../src/Controller'
+    resource: '../Controller'
     tags: ['controller.service_arguments']
