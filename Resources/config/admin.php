@@ -7,9 +7,6 @@ declare(strict_types=1);
  */
 namespace Martin1982\LiveBroadcastEasyadminBundle\DependencyInjection\Loader\Configurator;
 
-use Martin1982\LiveBroadcastEasyAdminBundle\Controller\Admin\AbstractChannelCrudController;
-use Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin\DashboardController;
-use Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin\LiveBroadcastCrudController;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $container) {

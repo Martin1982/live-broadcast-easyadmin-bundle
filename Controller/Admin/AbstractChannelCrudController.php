@@ -1,6 +1,6 @@
 <?php
 
-namespace Martin1982\LiveBroadcastEasyAdminBundle\Controller\Admin;
+namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 
 use Martin1982\LiveBroadcastBundle\Entity\Channel\AbstractChannel;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
