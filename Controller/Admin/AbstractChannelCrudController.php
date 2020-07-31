@@ -27,7 +27,8 @@ class AbstractChannelCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
-        $actions->disable('new');
+        $actions->disable('new')
+            ->add('admin', 'Add YouTube channel');
 
         return parent::configureActions($actions);
     }
