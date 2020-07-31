@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
 /**
- * live-broadcast-easyadmin-bundle - All rights reserved
+ * This file is part of martin1982/live-broadcast-easyadmin-bundle which is released under MIT.
+ * See https://opensource.org/licenses/MIT for full license details.
  */
 namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 

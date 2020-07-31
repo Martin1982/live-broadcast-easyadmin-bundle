@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
 /**
- * live-broadcast-easyadmin-bundle - All rights reserved
+ * This file is part of martin1982/live-broadcast-easyadmin-bundle which is released under MIT.
+ * See https://opensource.org/licenses/MIT for full license details.
  */
 namespace Martin1982\LiveBroadcastEasyadminBundle\Tests;
 
-use Martin1982\LiveBroadcastBundle\LiveBroadcastBundle;
 use Martin1982\LiveBroadcastEasyadminBundle\LiveBroadcastEasyadminBundle;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
