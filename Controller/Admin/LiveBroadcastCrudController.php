@@ -6,6 +6,7 @@
  */
 namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Martin1982\LiveBroadcastBundle\Entity\LiveBroadcast;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -24,14 +25,17 @@ class LiveBroadcastCrudController extends AbstractCrudController
         return LiveBroadcast::class;
     }
 
-    /*
+    /**
+     * Configure fields
+     *
+     * @param string $pageName
+     *
+     * @return iterable
+     */
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            yield TextField::new('name', 'Title'),
         ];
     }
-    */
 }
