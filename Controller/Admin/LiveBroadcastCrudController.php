@@ -47,9 +47,9 @@ class LiveBroadcastCrudController extends AbstractCrudController
             yield DateTimeField::new('startTimestamp', 'Broadcast start'),
             yield DateTimeField::new('endTimestamp', 'Broadcast end'),
             yield ChoiceField::new('privacyStatus', 'Privacy status (YouTube only)')->setChoices([
-                LiveBroadcast::PRIVACY_STATUS_PUBLIC => 'Public and listed',
-                LiveBroadcast::PRIVACY_STATUS_PRIVATE => 'Private',
-                LiveBroadcast::PRIVACY_STATUS_UNLISTED => 'Public and unlisted',
+                'Public and listed'     => LiveBroadcast::PRIVACY_STATUS_PUBLIC ,
+                'Private'               => LiveBroadcast::PRIVACY_STATUS_PRIVATE,
+                'Public and unlisted'   => LiveBroadcast::PRIVACY_STATUS_UNLISTED,
             ]),
             yield BooleanField::new('stopOnEndTimestamp', 'Force the stream to stop on the end time')->setHelp('When checked video will be looped and ended when the end time is reached. When unchecked video will play once and ignore the end time, when the end time is later than the video length video may be restarted'),
             yield AssociationField::new('input', 'Video input'),
