@@ -20,6 +20,8 @@ class DashboardController extends AbstractDashboardController
 {
     /**
      * @Route("/admin", name="admin")
+     *
+     * @return Response
      */
     public function index(): Response
     {
@@ -28,12 +30,22 @@ class DashboardController extends AbstractDashboardController
         return $this->render('@LiveBroadcastEasyadmin/welcome.html.twig');
     }
 
+    /**
+     * Configure dashboard features
+     *
+     * @return Dashboard
+     */
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
             ->setTitle('Live Broadcast Demo');
     }
 
+    /**
+     * Configure dashboard menu
+     *
+     * @return iterable
+     */
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
