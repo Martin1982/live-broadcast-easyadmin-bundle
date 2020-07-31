@@ -6,6 +6,7 @@
  */
 namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use Martin1982\LiveBroadcastBundle\Entity\Channel\AbstractChannel;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -22,6 +23,13 @@ class AbstractChannelCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return AbstractChannel::class;
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        $actions->disable('new');
+
+        return parent::configureActions($actions);
     }
 
     /*
