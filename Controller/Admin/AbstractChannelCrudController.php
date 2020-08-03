@@ -25,6 +25,13 @@ class AbstractChannelCrudController extends AbstractCrudController
         return AbstractChannel::class;
     }
 
+    /**
+     * Configure actions
+     *
+     * @param Actions $actions
+     *
+     * @return Actions
+     */
     public function configureActions(Actions $actions): Actions
     {
         $actions->disable('new')
