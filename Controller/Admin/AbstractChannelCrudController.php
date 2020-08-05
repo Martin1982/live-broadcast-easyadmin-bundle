@@ -36,17 +36,17 @@ class AbstractChannelCrudController extends AbstractCrudController
      */
     public function configureActions(Actions $actions): Actions
     {
-        $newYouTubeAction = Action::new('newYouTubeChannel', 'New YouTube Channel', 'fa fa-youtube')
+        $newYouTubeAction = Action::new('newYouTubeChannel', 'New YouTube Channel', 'fa fa-fw fa-youtube')
             ->createAsGlobalAction()
             ->displayAsButton()
             ->linkToRoute('homepage');
 
-        $newFacebookAction = Action::new('newFacebookChannel', 'New Facebook Channel', 'fa fa-facebook')
+        $newFacebookAction = Action::new('newFacebookChannel', 'New Facebook Channel', 'fa fa-fw fa-facebook')
             ->createAsGlobalAction()
             ->displayAsButton()
             ->linkToRoute('homepage');
 
-        $newTwitchAction = Action::new('newTwitchChannel', 'New Twitch Channel', 'fa fa-twitch')
+        $newTwitchAction = Action::new('newTwitchChannel', 'New Twitch Channel', 'fa fa-fw fa-twitch')
             ->createAsGlobalAction()
             ->displayAsButton()
             ->linkToRoute('homepage');
