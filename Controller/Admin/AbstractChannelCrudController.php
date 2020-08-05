@@ -6,7 +6,9 @@
  */
 namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use Martin1982\LiveBroadcastBundle\Entity\Channel\AbstractChannel;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -34,8 +36,11 @@ class AbstractChannelCrudController extends AbstractCrudController
      */
     public function configureActions(Actions $actions): Actions
     {
-        $actions->disable('new')
-            ->add('admin', 'Add YouTube channel');
+        $newYouTubeAction = Action::new('newYouTubeChannel', 'New YouTube Channel', 'fa fa-youtube')
+            ->linkToRoute('homepage');
+
+        $actions->disable(Action::NEW)
+            ->add(Crud::PAGE_INDEX, $newYouTubeAction);
 
         return parent::configureActions($actions);
     }
