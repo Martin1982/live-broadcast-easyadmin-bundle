@@ -37,6 +37,7 @@ class AbstractChannelCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         $newYouTubeAction = Action::new('newYouTubeChannel', 'New YouTube Channel', 'fa fa-youtube')
+            ->createAsGlobalAction()
             ->linkToRoute('homepage');
 
         $actions->add(Crud::PAGE_INDEX, $newYouTubeAction);
