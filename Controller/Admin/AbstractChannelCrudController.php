@@ -38,17 +38,17 @@ class AbstractChannelCrudController extends AbstractCrudController
     {
         $newYouTubeAction = Action::new('newYouTubeChannel', 'New YouTube Channel', 'fa fa-fw fa-youtube')
             ->createAsGlobalAction()
-            ->displayAsButton()
+            ->addCssClass('btn btn-primary')
             ->linkToRoute('homepage');
 
         $newFacebookAction = Action::new('newFacebookChannel', 'New Facebook Channel', 'fa fa-fw fa-facebook')
             ->createAsGlobalAction()
-            ->displayAsButton()
+            ->addCssClass('btn btn-primary')
             ->linkToRoute('homepage');
 
         $newTwitchAction = Action::new('newTwitchChannel', 'New Twitch Channel', 'fa fa-fw fa-twitch')
             ->createAsGlobalAction()
-            ->displayAsButton()
+            ->addCssClass('btn btn-primary')
             ->linkToRoute('homepage');
 
         $actions
