@@ -9,6 +9,7 @@ namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
 use Martin1982\LiveBroadcastBundle\Entity\Channel\AbstractChannel;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -36,10 +37,17 @@ class AbstractChannelCrudController extends AbstractCrudController
      */
     public function configureActions(Actions $actions): Actions
     {
+        /** @var CrudUrlGenerator $crudUrlGenerator */
+        $crudUrlGenerator = $this->get(CrudUrlGenerator::class);
+
+        $newYouTubeUrl = $crudUrlGenerator->build()
+            ->setController(YouTubeChannelCrudController::class)
+            ->setAction(Action::NEW)
+            ->generateUrl();
         $newYouTubeAction = Action::new('newYouTubeChannel', 'New YouTube Channel', 'fa fa-fw fa-youtube')
             ->createAsGlobalAction()
             ->addCssClass('btn btn-primary')
-            ->linkToRoute('homepage');
+            ->linkToUrl($newYouTubeUrl);
 
         $newFacebookAction = Action::new('newFacebookChannel', 'New Facebook Channel', 'fa fa-fw fa-facebook')
             ->createAsGlobalAction()
