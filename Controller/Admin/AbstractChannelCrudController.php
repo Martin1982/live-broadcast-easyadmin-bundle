@@ -101,7 +101,7 @@ class AbstractChannelCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         $fields = null;
-        $name = TextField::new('name');
+        $name = TextField::new('channelName');
         $typeName = TextField::new('typeName')
             ->onlyOnIndex();
         $isHealthy = BooleanField::new('isHealthy');
