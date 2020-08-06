@@ -57,8 +57,10 @@ class LiveBroadcastCrudController extends AbstractCrudController
     {
         if (Action::INDEX === $pageName) {
             return [
-                'name',
-                'startTimestamp',
+                yield TextField::new('name'),
+                yield AssociationField::new('outputChannels'),
+                yield DateTimeField::new('startTimestamp'),
+                yield DateTimeField::new('endTimestamp'),
             ];
         }
 
