@@ -110,6 +110,7 @@ class AbstractChannelCrudController extends AbstractCrudController
                     return '<i class="fab fa-'.strtolower($value).'"></i> '.$value;
                 }
             )
+            ->renderAsHtml()
             ->onlyOnIndex();
         $isHealthy = BooleanField::new('isHealthy');
 
