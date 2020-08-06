@@ -29,8 +29,8 @@ class FacebookConnectField implements FieldInterface
         return (new self())
             ->setProperty($propertyName)
             ->setLabel($label)
-            ->setTemplateName('crud/field/text')
+            ->setTemplatePath('crud/field/facebook_connect.html.twig')
             ->setFormType(TextType::class)
-            ->addCssClass('field-text');
+            ->addCssClass('field-facebook-connect');
     }
 }

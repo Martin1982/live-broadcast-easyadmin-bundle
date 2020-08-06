@@ -39,8 +39,6 @@ class FacebookChannelCrudController extends AbstractCrudController
             return [
                 yield TextField::new('channelName'),
                 yield FacebookConnectField::new('accessToken'),
-                yield TextField::new('accessToken')
-                    ->setFormTypeOption('disabled', true),
                 yield TextField::new('fbEntityId')
                     ->setFormTypeOption('disabled', true),
             ];

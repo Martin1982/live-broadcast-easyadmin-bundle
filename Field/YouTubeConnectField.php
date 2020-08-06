@@ -29,8 +29,8 @@ class YouTubeConnectField implements FieldInterface
         return (new self())
             ->setProperty($propertyName)
             ->setLabel($label)
-            ->setTemplateName('crud/field/facebook_connect')
+            ->setTemplatePath('crud/field/youtube_connect.html.twig')
             ->setFormType(TextType::class)
-            ->addCssClass('field-facebook-connect');
+            ->addCssClass('field-youtube-connect');
     }
 }

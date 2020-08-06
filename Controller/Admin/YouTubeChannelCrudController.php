@@ -39,8 +39,6 @@ class YouTubeChannelCrudController extends AbstractCrudController
             return [
                 yield TextField::new('channelName'),
                 yield YouTubeConnectField::new('refreshToken'),
-                yield TextField::new('refreshToken')
-                    ->setFormTypeOption('disabled', true),
                 yield TextField::new('youTubeChannelName')
                     ->setFormTypeOption('disabled', true),
             ];
