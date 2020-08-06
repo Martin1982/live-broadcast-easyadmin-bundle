@@ -7,6 +7,7 @@ namespace Martin1982\LiveBroadcastEasyadminBundle\Field;
 
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FieldTrait;
+use Martin1982\LiveBroadcastEasyadminBundle\Form\Type\YouTubeConnectType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -29,8 +30,8 @@ class YouTubeConnectField implements FieldInterface
         return (new self())
             ->setProperty($propertyName)
             ->setLabel($label)
-            ->setTemplatePath('crud/field/youtube_connect.html.twig')
-            ->setFormType(TextType::class)
+            ->setTemplatePath('@LiveBroadcastEasyadmin/crud/field/youtube_connect.html.twig')
+            ->setFormType(YouTubeConnectType::class)
             ->addCssClass('field-youtube-connect');
     }
 }
