@@ -37,8 +37,10 @@ class YouTubeChannelCrudController extends AbstractCrudController
         if (Action::NEW === $pageName || Action::EDIT === $pageName) {
             return [
                 yield TextField::new('channelName'),
-                yield TextField::new('refreshToken'),
-                yield TextField::new('youTubeChannelName'),
+                yield TextField::new('refreshToken')
+                    ->setFormTypeOption('disabled', true),
+                yield TextField::new('youTubeChannelName')
+                    ->setFormTypeOption('disabled', true),
             ];
         }
 

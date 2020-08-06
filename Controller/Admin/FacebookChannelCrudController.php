@@ -37,8 +37,10 @@ class FacebookChannelCrudController extends AbstractCrudController
         if (Action::NEW === $pageName || Action::EDIT === $pageName) {
             return [
                 yield TextField::new('channelName'),
-                yield TextField::new('accessToken'),
-                yield TextField::new('fbEntityId'),
+                yield TextField::new('accessToken')
+                    ->setFormTypeOption('disabled', true),
+                yield TextField::new('fbEntityId')
+                    ->setFormTypeOption('disabled', true),
             ];
         }
 
