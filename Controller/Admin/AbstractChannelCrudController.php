@@ -111,7 +111,7 @@ class AbstractChannelCrudController extends AbstractCrudController
 
         /** @var AbstractChannel $entity */
         $entity = $context->getEntity()->getInstance();
-        if ($entity instanceof AbstractChannel) {
+        if (!$entity instanceof AbstractChannel) {
             throw new \Exception('Entity is not an instance of AbstractChannel');
         }
         $class = get_class($entity);
