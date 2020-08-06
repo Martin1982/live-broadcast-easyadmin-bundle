@@ -29,8 +29,8 @@ class YouTubeConnectField implements FieldInterface
         return (new self())
             ->setProperty($propertyName)
             ->setLabel($label)
-            ->setTemplateName('crud/field/text')
+            ->setTemplateName('crud/field/facebook_connect')
             ->setFormType(TextType::class)
-            ->addCssClass('field-text');
+            ->addCssClass('field-facebook-connect');
     }
 }
