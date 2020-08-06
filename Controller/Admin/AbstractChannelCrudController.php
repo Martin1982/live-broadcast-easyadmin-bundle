@@ -103,9 +103,13 @@ class AbstractChannelCrudController extends AbstractCrudController
         $fields = null;
         $name = TextField::new('channelName');
         $typeName = TextField::new('typeName')
-            ->formatValue(function ($value) {
-                return '<i class="fab fa-'.strtolower($value).'"></i> '.$value;
-            })
+            ->formatValue(
+                static function ($value) {
+                    $value = (string) $value;
+
+                    return '<i class="fab fa-'.strtolower($value).'"></i> '.$value;
+                }
+            )
             ->onlyOnIndex();
         $isHealthy = BooleanField::new('isHealthy');
 
