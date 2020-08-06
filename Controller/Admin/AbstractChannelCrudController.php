@@ -9,6 +9,8 @@ namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
 use Martin1982\LiveBroadcastBundle\Entity\Channel\AbstractChannel;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -99,12 +101,15 @@ class AbstractChannelCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         $fields = null;
+        $name = TextField::new('name');
+        $typeName = TextField::new('typeName');
+        $isHealthy = BooleanField::new('isHealthy');
 
         if (Crud::PAGE_INDEX === $pageName) {
             $fields = [
-                'name',
-                'typeName',
-                'isHealthy'
+                $name,
+                $typeName,
+                $isHealthy,
             ];
         }
 
