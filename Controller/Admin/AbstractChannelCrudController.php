@@ -106,24 +106,43 @@ class AbstractChannelCrudController extends AbstractCrudController
      */
     public function edit(AdminContext $context)
     {
+        /** @var CrudUrlGenerator $crudUrlGenerator */
+        $crudUrlGenerator = $this->get(CrudUrlGenerator::class);
+
+        /** @var AbstractChannel $entity */
         $entity = $context->getEntity()->getInstance();
-        $class = null !== $entity ? get_class($entity): 'none';
+        if ($entity instanceof AbstractChannel) {
+            throw new \Exception('Entity is not an instance of AbstractChannel');
+        }
+        $class = get_class($entity);
 
         switch ($class) {
             case ChannelTwitch::class:
-                $forward = $this->redirect('/admin?twitch');
+                $url = $crudUrlGenerator->build()
+                    ->setController(TwitchChannelCrudController::class)
+                    ->setAction(Action::EDIT)
+                    ->setEntityId($entity->getChannelId())
+                    ->generateUrl();
                 break;
             case ChannelYouTube::class:
-                $forward = $this->redirect('/admin?youtube');
+                $url = $crudUrlGenerator->build()
+                    ->setController(YouTubeChannelCrudController::class)
+                    ->setAction(Action::EDIT)
+                    ->setEntityId($entity->getChannelId())
+                    ->generateUrl();
                 break;
             case ChannelFacebook::class:
-                $forward = $this->redirect('/admin?facebook');
+                $url = $crudUrlGenerator->build()
+                    ->setController(FacebookChannelCrudController::class)
+                    ->setAction(Action::EDIT)
+                    ->setEntityId($entity->getChannelId())
+                    ->generateUrl();
                 break;
             default:
-                throw new \Exception('No context for class '.$class);
+                throw new \Exception(sprintf('No context for class %s', $class));
         }
 
-        return $forward;
+        return $this->redirect($url);
     }
 
     /**
