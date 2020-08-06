@@ -102,7 +102,8 @@ class AbstractChannelCrudController extends AbstractCrudController
     {
         $fields = null;
         $name = TextField::new('name');
-        $typeName = TextField::new('typeName');
+        $typeName = TextField::new('typeName')
+            ->onlyOnIndex();
         $isHealthy = BooleanField::new('isHealthy');
 
         if (Crud::PAGE_INDEX === $pageName) {
