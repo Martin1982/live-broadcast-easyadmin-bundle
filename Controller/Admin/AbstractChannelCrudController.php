@@ -112,7 +112,9 @@ class AbstractChannelCrudController extends AbstractCrudController
             )
             ->renderAsHtml()
             ->onlyOnIndex();
-        $isHealthy = BooleanField::new('isHealthy');
+        $isHealthy = BooleanField::new('isHealthy')
+            ->renderAsSwitch(false)
+            ->onlyOnIndex();
 
         if (Crud::PAGE_INDEX === $pageName) {
             $fields = [
