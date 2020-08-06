@@ -89,14 +89,25 @@ class AbstractChannelCrudController extends AbstractCrudController
         return parent::configureActions($actions);
     }
 
-    /*
+    /**
+     * Configure fields
+     *
+     * @param string $pageName
+     *
+     * @return iterable
+     */
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        $fields = null;
+
+        if (Crud::PAGE_INDEX === $pageName) {
+            $fields = [
+                'name',
+                'typeName',
+                'isHealthy'
+            ];
+        }
+
+        return $fields ?? parent::configureFields($pageName);
     }
-    */
 }
