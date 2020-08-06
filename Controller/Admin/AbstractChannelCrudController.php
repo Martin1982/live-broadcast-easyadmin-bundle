@@ -9,11 +9,15 @@ namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
 use Martin1982\LiveBroadcastBundle\Entity\Channel\AbstractChannel;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelFacebook;
+use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelTwitch;
+use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelYouTube;
 
 /**
  * Class AbstractChannelCrudController
@@ -89,6 +93,37 @@ class AbstractChannelCrudController extends AbstractCrudController
             ->add(Crud::PAGE_INDEX, $newTwitchAction);
 
         return parent::configureActions($actions);
+    }
+
+    /**
+     * Redirect to the applicable CRUD controller
+     *
+     * @param AdminContext $context
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore|\Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Exception
+     */
+    public function edit(AdminContext $context)
+    {
+        $entity = $context->getEntity()->getInstance();
+        $class = null !== $entity ? get_class($entity): 'none';
+
+        switch ($class) {
+            case ChannelTwitch::class:
+                $forward = $this->redirect('/admin?twitch');
+                break;
+            case ChannelYouTube::class:
+                $forward = $this->redirect('/admin?youtube');
+                break;
+            case ChannelFacebook::class:
+                $forward = $this->redirect('/admin?facebook');
+                break;
+            default:
+                throw new \Exception('No context for class '.$class);
+        }
+
+        return $forward;
     }
 
     /**
