@@ -29,6 +29,19 @@ class AbstractChannelCrudController extends AbstractCrudController
     }
 
     /**
+     * Configure CRUD screen
+     *
+     * @param Crud $crud
+     *
+     * @return Crud
+     */
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud->setEntityLabelInSingular('Channel')
+            ->setEntityLabelInPlural('Channels');
+    }
+
+    /**
      * Configure actions
      *
      * @param Actions $actions
