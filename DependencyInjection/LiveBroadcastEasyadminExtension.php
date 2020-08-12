@@ -25,10 +25,6 @@ class LiveBroadcastEasyadminExtension extends Extension
     {
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('admin.php');
-
-        $container->loadFromExtension('twig', [
-            'form_themes' => [ '@LiveBroadcastEasyAdmin/Resources/views/fields.html.twig' ]
-        ]);
     }
 
 }
