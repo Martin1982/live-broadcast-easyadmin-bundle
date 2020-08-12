@@ -6,6 +6,7 @@
 namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelYouTube;
@@ -45,5 +46,20 @@ class YouTubeChannelCrudController extends AbstractCrudController
         }
 
         return [];
+    }
+
+    /**
+     * Configure CRUD
+     *
+     * @param Crud $crud
+     *
+     * @return Crud
+     */
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud->setFormThemes([
+            '@LiveBroadcastEasyadmin/field/fields.html.twig',
+            '@EasyAdmin/crud/form_theme.html.twig',
+        ]);
     }
 }
