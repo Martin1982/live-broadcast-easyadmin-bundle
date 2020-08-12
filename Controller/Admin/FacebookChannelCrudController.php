@@ -18,21 +18,6 @@ use Martin1982\LiveBroadcastEasyadminBundle\Field\FacebookConnectField;
 class FacebookChannelCrudController extends AbstractCrudController
 {
     /**
-     * @var string
-     */
-    protected $facebookAppId = '';
-
-    /**
-     * FacebookChannelCrudController constructor.
-     *
-     * @param string $facebookAppId
-     */
-    public function __construct($facebookAppId = '')
-    {
-        $this->facebookAppId = $facebookAppId;
-    }
-
-    /**
      * Get class name
      *
      * @return string
@@ -72,9 +57,6 @@ class FacebookChannelCrudController extends AbstractCrudController
      */
     public function configureCrud(Crud $crud): Crud
     {
-        $options = [ 'facebook_app_id' => $this->facebookAppId];
-        $crud->setFormOptions($options);
-
         return $crud->setFormThemes([
             '@LiveBroadcastEasyadmin/field/fields.html.twig',
             '@EasyAdmin/crud/form_theme.html.twig',

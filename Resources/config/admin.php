@@ -7,6 +7,7 @@ declare(strict_types=1);
  */
 namespace Martin1982\LiveBroadcastEasyadminBundle\DependencyInjection\Loader\Configurator;
 
+use Martin1982\LiveBroadcastEasyadminBundle\Form\Type\FacebookConnectType;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $container) {
@@ -22,6 +23,6 @@ return static function (ContainerConfigurator $container) {
     $services->load('Martin1982\\LiveBroadcastEasyadminBundle\\Controller\\', '../../Controller')
         ->tag('controller.service_arguments');
 
-    $services->load('Martin1982\\LiveBroadcastEasyadminBundle\\Controller\\Admin\\FacebookChannelCrudController\\', '../../Controller/Admin/FacebookChannelCrudController.php')
-        ->arg('$facebookAppId', '%env(FACEBOOK_APP_ID)%');
+    $services->set(FacebookConnectType::class)
+        ->arg('$facebookAppid', '%env(FACEBOOK_APP_ID)%');
 };

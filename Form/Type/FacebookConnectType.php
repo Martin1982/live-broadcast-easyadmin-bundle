@@ -18,6 +18,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class FacebookConnectType extends AbstractType
 {
     /**
+     * @var string
+     */
+    protected $facebookAppid = '';
+
+    /**
+     * FacebookConnectType constructor.
+     *
+     * @param string $facebookAppId
+     */
+    public function __construct($facebookAppId = '')
+    {
+        $this->facebookAppid = $facebookAppId;
+    }
+
+    /**
      * Build form type
      *
      * @param FormBuilderInterface $builder
@@ -54,6 +69,6 @@ class FacebookConnectType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault('facebook_app_id', '');
+        $resolver->setDefault('facebook_app_id', $this->facebookAppid);
     }
 }
