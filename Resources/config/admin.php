@@ -24,5 +24,5 @@ return static function (ContainerConfigurator $container) {
         ->tag('controller.service_arguments');
 
     $services->set(FacebookConnectType::class)
-        ->arg('$facebookAppid', '%env(FACEBOOK_APP_ID)%');
+        ->arg('$facebookAppId', '%env(FACEBOOK_APP_ID)%');
 };
