@@ -27,7 +27,7 @@ class FacebookConnectType extends AbstractType
      *
      * @param string $facebookAppId
      */
-    public function __construct($facebookAppId = '')
+    public function __construct($facebookAppId)
     {
         $this->facebookAppid = $facebookAppId;
     }
