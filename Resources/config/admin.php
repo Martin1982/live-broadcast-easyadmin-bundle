@@ -22,6 +22,6 @@ return static function (ContainerConfigurator $container) {
     $services->load('Martin1982\\LiveBroadcastEasyadminBundle\\Controller\\', '../../Controller')
         ->tag('controller.service_arguments');
 
-    $services->load('Martin1982\\LiveBroadcastEasyadminBundle\\Controller\\', '../../Controller/FacebookChannelCrudController')
+    $services->load('Martin1982\\LiveBroadcastEasyadminBundle\\Controller\\FacebookChannelCrudController', '../../Controller/FacebookChannelCrudController')
         ->arg('$facebookAppId', '%env(FACEBOOK_APP_ID)%');
 };
