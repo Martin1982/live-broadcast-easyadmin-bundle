@@ -7,8 +7,10 @@ declare(strict_types=1);
  */
 namespace Martin1982\LiveBroadcastEasyadminBundle\DependencyInjection\Loader\Configurator;
 
+use Martin1982\LiveBroadcastEasyadminBundle\Controller\AuthCallback\FacebookController;
 use Martin1982\LiveBroadcastEasyadminBundle\Form\Type\FacebookConnectType;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\DependencyInjection\Reference;
 
 return static function (ContainerConfigurator $container) {
     $services = $container->services();
@@ -25,4 +27,7 @@ return static function (ContainerConfigurator $container) {
 
     $services->set(FacebookConnectType::class)
         ->arg('$facebookAppId', '%env(FACEBOOK_APP_ID)%');
+
+    $services->set(FacebookController::class)
+        ->arg('$facebookApi', new Reference('live.broadcast.facebook_api.service'));
 };
