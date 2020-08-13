@@ -1,11 +1,17 @@
 {% block facebook_connect_row %}
     <div class="form-group">
-        <label for="livebroadcast-fb-entity-select" id="fb-status">Login with Facebook and choose from your available Facebook entities.</label>
+        <label for="fb-login-btn">Connect</label>
         <div class="form-widget">
-            <fb:login-button scope="public_profile,email,publish_pages,user_events,publish_video" onlogin="checkLoginState();" autologoutlink="true" />
+            <fb:login-button id="fb-login-btn" scope="public_profile,email,pages_manage_posts,user_events,publish_video" onlogin="checkLoginState();" autologoutlink="true" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="livebroadcast-fb-entity-select">Channel entity</label>
+        <div class="form-widget">
             <select id="livebroadcast-fb-entity-select">
                 <option>Select your Facebook entity</option>
-            </select>
+            </select><br />
+            <span id="fb-status">Login with Facebook and choose from your available Facebook entities.</span>
         </div>
     </div>
 

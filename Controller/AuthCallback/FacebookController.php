@@ -6,6 +6,8 @@
 namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\AuthCallback;
 
 use Facebook\Authentication\AccessToken;
+use Martin1982\LiveBroadcastBundle\Exception\LiveBroadcastOutputException;
+use Martin1982\LiveBroadcastBundle\Service\ChannelApi\FacebookApiService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +21,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class FacebookController extends AbstractController
 {
     /**
+     * @var FacebookApiService
+     */
+    protected $facebookApi;
+
+    /**
+     * FacebookController constructor.
+     *
+     * @param FacebookApiService $facebookApi
+     */
+    public function __construct(FacebookApiService $facebookApi)
+    {
+        $this->facebookApi = $facebookApi;
+    }
+
+    /**
      * Request a long lived access token
      *
      * @Route("/fb-access-token", name="facebook_access_token")
@@ -26,11 +43,12 @@ class FacebookController extends AbstractController
      * @param Request $request
      *
      * @return JsonResponse
+     *
+     * @throws LiveBroadcastOutputException
      */
     public function longLivedAccessTokenAction(Request $request): JsonResponse
     {
-        $facebookService = $this->get('live.broadcast.facebook_api.service');
-        $accessToken = $facebookService->getLongLivedAccessToken($request->get('userAccessToken'));
+        $accessToken = $this->facebookApi->getLongLivedAccessToken($request->get('userAccessToken'));
         $response = new JsonResponse(null, 500);
 
         if ($accessToken instanceof AccessToken) {
