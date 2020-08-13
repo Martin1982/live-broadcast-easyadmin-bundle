@@ -21,7 +21,7 @@ class FacebookController extends AbstractController
     /**
      * Request a long lived access token
      *
-     * @Route("fb-access-token", name="facebook_access_token")
+     * @Route("/fb-access-token", name="facebook_access_token")
      *
      * @param Request $request
      *
