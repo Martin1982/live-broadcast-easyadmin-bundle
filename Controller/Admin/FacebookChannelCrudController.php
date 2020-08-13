@@ -45,8 +45,7 @@ class FacebookChannelCrudController extends AbstractCrudController
             ->setAction(Action::INDEX)
             ->generateUrl();
 
-        $actions->remove(Crud::PAGE_INDEX, Action::INDEX)
-            ->add(Crud::PAGE_INDEX, $channelIndexUrl);
+        $actions->add(Crud::PAGE_INDEX, $channelIndexUrl);
 
         return parent::configureActions($actions);
     }
