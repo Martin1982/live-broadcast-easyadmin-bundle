@@ -79,7 +79,7 @@
                         option.attr('value', meResponse.id);
                         /* Get a long lived access token for the user access token */
                         $.ajax({
-                            url: '{# @todo admin.generateUrl('longLivedAccessToken') #}',
+                            url: '{{ path('facebook_access_token') }}',
                             data: {
                                 'userAccessToken': FB.getAccessToken()
                             },
