@@ -44,7 +44,10 @@ class TwitchChannelCrudController extends AbstractCrudController
             ->setAction(Action::INDEX)
             ->generateUrl();
 
-        $actions->add(Crud::PAGE_INDEX, $channelIndexUrl);
+        $channelIndexAction = Action::new('channel_index_action', 'Channel index')
+            ->linkToUrl($channelIndexUrl);
+
+        $actions->add(Crud::PAGE_INDEX, $channelIndexAction);
 
         return parent::configureActions($actions);
     }
