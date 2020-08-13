@@ -44,22 +44,6 @@ class FacebookConnectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('accessToken', TextType::class);
-
-        $builder->get('accessToken')
-            ->addModelTransformer(new CallbackTransformer(
-                static function($accessToken) {
-                    return $accessToken;
-                },
-                static function($accessToken) {
-                    $accessTokenValue = null;
-
-                    if (is_array($accessToken)) {
-                        $accessTokenValue = $accessToken['accessToken'];
-                    }
-
-                    return $accessTokenValue;
-                }
-            ));
     }
 
     /**

@@ -29,6 +29,7 @@ class FacebookConnectField implements FieldInterface
     {
         return (new self())
             ->setProperty($propertyName)
+            ->setVirtual(true)
             ->setLabel($label)
             ->setTemplatePath('@LiveBroadcastEasyadmin/crud/field/facebook_connect.html.twig')
             ->setFormType(FacebookConnectType::class)

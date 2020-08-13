@@ -6,9 +6,11 @@
 namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
 use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelFacebook;
 use Martin1982\LiveBroadcastEasyadminBundle\Field\FacebookConnectField;
 
@@ -25,6 +27,27 @@ class FacebookChannelCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return ChannelFacebook::class;
+    }
+
+    /**
+     * Configure rediret actions for the index
+     *
+     * @param Actions $actions
+     *
+     * @return Actions
+     */
+    public function configureActions(Actions $actions): Actions
+    {
+        /** @var CrudUrlGenerator $crudUrlGenerator */
+        $crudUrlGenerator = $this->get(CrudUrlGenerator::class);
+        $channelIndexUrl = $crudUrlGenerator->build()
+            ->setController(AbstractChannelCrudController::class)
+            ->setAction(Action::INDEX)
+            ->generateUrl();
+
+        $actions->update(Crud::PAGE_INDEX, Action::INDEX, $channelIndexUrl);
+
+        return parent::configureActions($actions);
     }
 
     /**
