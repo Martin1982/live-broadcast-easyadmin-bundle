@@ -6,6 +6,7 @@
 namespace Martin1982\LiveBroadcastEasyadminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
@@ -42,8 +43,23 @@ class FacebookConnectType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('accessToken', TextType::class)
-            ->add('fbEntityId', TextType::class);
+        $builder->add('accessToken', TextType::class);
+
+        $builder->get('accessToken')
+            ->addModelTransformer(new CallbackTransformer(
+                static function($accessToken) {
+                    return $accessToken;
+                },
+                static function($accessToken) {
+                    $accessTokenValue = null;
+
+                    if (is_array($accessToken)) {
+                        $accessTokenValue = $accessToken['accessToken'];
+                    }
+
+                    return $accessTokenValue;
+                }
+            ));
     }
 
     /**
