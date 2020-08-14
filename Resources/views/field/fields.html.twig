@@ -160,7 +160,7 @@
     <div class="form-group">
         <label for="fb-login-btn">Connect</label>
         <div class="form-widget">
-            {% if isAuthenticated %}
+            {% if isAuthenticated|default(false) %}
                 <p>Your current YouTube channel selection is: <strong>{{ youTubeChannelName|default('') }}</strong></p>
                 <p><button class="btn btn-warning broadcast-youtube-switch">Switch to another YouTube channel/account</button></p>
                 <p><button class="btn btn-primary broadcast-youtube-attach">Attach this YouTube channel/account</button></p>
