@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\HiddenField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
 use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelFacebook;
@@ -60,11 +61,9 @@ class FacebookChannelCrudController extends AbstractCrudController
     {
         if (Action::NEW === $pageName || Action::EDIT === $pageName) {
             return [
-                yield FacebookConnectField::new('accessToken')
-                    ->setFormTypeOption('attr', [ 'readonly' => true ]),
-                yield TextField::new('channelName'),
-                yield TextField::new('fbEntityId')
-                    ->setFormTypeOption('attr', [ 'readonly' => true ]),
+                FacebookConnectField::new('channelName'),
+                HiddenField::new('channelName'),
+                HiddenField::new('fbEntityId'),
             ];
         }
 

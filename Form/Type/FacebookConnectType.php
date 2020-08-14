@@ -5,10 +5,7 @@
  */
 namespace Martin1982\LiveBroadcastEasyadminBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,7 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Class FacebookConnectType
  */
-class FacebookConnectType extends AbstractType
+class FacebookConnectType extends TextType
 {
     /**
      * @var string
@@ -34,19 +31,6 @@ class FacebookConnectType extends AbstractType
     }
 
     /**
-     * Build form type
-     *
-     * @param FormBuilderInterface $builder
-     * @param array                $options
-     *
-     * @return void
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder->add('accessToken', TextType::class);
-    }
-
-    /**
      * Build form view
      *
      * @param FormView      $view
@@ -57,6 +41,7 @@ class FacebookConnectType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
+        parent::buildView($view, $form, $options);
         $view->vars['facebookAppId'] = $options['facebook_app_id'];
     }
 
@@ -69,6 +54,7 @@ class FacebookConnectType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
         $resolver->setDefault('facebook_app_id', $this->facebookAppid);
     }
 }

@@ -8,7 +8,6 @@ namespace Martin1982\LiveBroadcastEasyadminBundle\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FieldTrait;
 use Martin1982\LiveBroadcastEasyadminBundle\Form\Type\FacebookConnectType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
  * Class FacebookConnectField
@@ -29,9 +28,8 @@ class FacebookConnectField implements FieldInterface
     {
         return (new self())
             ->setProperty($propertyName)
-            ->setVirtual(true)
             ->setLabel($label)
-            ->setTemplatePath('@LiveBroadcastEasyadmin/crud/field/facebook_connect.html.twig')
+            ->setTemplateName('crud/field/text')
             ->setFormType(FacebookConnectType::class)
             ->addCssClass('field-facebook-connect');
     }
