@@ -160,12 +160,12 @@
     <div class="form-group">
         <label for="youtube-login-btn">Connect</label>
         <div class="form-widget">
-            {% if isAuthenticated|default(false) %}
-                <p>Your current YouTube channel selection is: <strong>{{ youTubeChannelName|default('') }}</strong></p>
+            {% if isAuthenticated %}
+                <p>Your current YouTube channel selection is: <strong>{{ youTubeChannelName }}</strong></p>
                 <p><button class="btn btn-warning broadcast-youtube-switch">Switch to another YouTube channel/account</button></p>
                 <p><button class="btn btn-primary broadcast-youtube-attach">Attach this YouTube channel/account</button></p>
             {% else %}
-                <a href="{{ authUrl|default('#') }}" id="yt-login"><i class="fab fa-youtube-play" style="color: #cd201f;"></i>&nbsp;Login with YouTube</a>
+                <a href="{{ authUrl }}" id="yt-login"><i class="fab fa-youtube" style="color: #cd201f;"></i>&nbsp;Login with YouTube</a>
             {% endif %}
         </div>
     </div>
