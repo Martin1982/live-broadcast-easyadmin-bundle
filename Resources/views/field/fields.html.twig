@@ -14,7 +14,7 @@
             <span id="fb-status">Login with Facebook and choose from your available Facebook entities.</span>
         </div>
     </div>
-    {{ form_row() }}
+    {{ form_row(form) }}
 
     {% block facebook_js %}
         <script type="text/javascript">
@@ -172,7 +172,7 @@
     <div class="form-group">
         <span id="yt-status">Login with YouTube and choose from your available YouTube channels.</span>
     </div>
-    {{ form_row(form.youTubeChannelName) }}
+    {{ form_row(form) }}
 
     {% block you_tube_js %}
         <script type="text/javascript">
