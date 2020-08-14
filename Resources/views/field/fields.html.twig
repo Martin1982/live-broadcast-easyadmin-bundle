@@ -1,5 +1,5 @@
 {% block facebook_connect_row %}
-    <div class="form-group">
+    <div class="form-group" xmlns:fb="">
         <label for="fb-login-btn">Connect</label>
         <div class="form-widget">
             <fb:login-button id="fb-login-btn" scope="public_profile,email,pages_manage_posts,user_events,publish_video" onlogin="checkLoginState();" autologoutlink="true" />
@@ -37,7 +37,7 @@
             }
             window.fbAsyncInit = function() {
                 FB.init({
-                    appId      : '{{ facebookAppId|default('') }}',
+                    appId      : '{{ facebookAppId }}',
                     cookie     : true,
                     xfbml      : true,
                     version    : 'v8.0'
@@ -49,7 +49,7 @@
                     let selected = $(this).find('option:selected');
                     if (selected.val().length > 0) {
                         $('input#ChannelFacebook_channelName').val(selected.text());
-                        $('input#ChannelFacebook_accessToken_accessToken').val(selected.attr('data-access-token'));
+                        $('input#ChannelFacebook_accessToken').val(selected.attr('data-access-token'));
                         $('input#ChannelFacebook_fbEntityId').val(selected.val());
                     }
                 });
@@ -95,7 +95,7 @@
                                 $('#livebroadcast-fb-entity-select').append(option);
                                 FB.broadcast = { accessToken: data.accessToken };
                                 /* Retrieve page access tokens with the long lived user access token */
-                                FB.api('/me/accounts', {access_token: data.accessToken }, makeAccountSelectable);
+                                FB.api('/me/accounts', { access_token: data.accessToken }, makeAccountSelectable);
                                 FB.api('/me/groups', makeGroupsSelectable);
                                 FB.api('/me/events', makeEventsSelectable);
                             }
@@ -158,14 +158,14 @@
 
 {% block you_tube_connect_row %}
     <div class="form-group">
-        <label for="fb-login-btn">Connect</label>
+        <label for="youtube-login-btn">Connect</label>
         <div class="form-widget">
             {% if isAuthenticated|default(false) %}
                 <p>Your current YouTube channel selection is: <strong>{{ youTubeChannelName|default('') }}</strong></p>
                 <p><button class="btn btn-warning broadcast-youtube-switch">Switch to another YouTube channel/account</button></p>
                 <p><button class="btn btn-primary broadcast-youtube-attach">Attach this YouTube channel/account</button></p>
             {% else %}
-                <a href="{{ authUrl|default('#') }}" id="yt-login"><i class="fa fa-youtube-play" style="color: #cd201f;"></i>&nbsp;Login with YouTube</a>
+                <a href="{{ authUrl|default('#') }}" id="yt-login"><i class="fab fa-youtube-play" style="color: #cd201f;"></i>&nbsp;Login with YouTube</a>
             {% endif %}
         </div>
     </div>
@@ -187,6 +187,6 @@
                     $('.input-yt-refreshtoken').attr('value', '{{ youTubeRefreshToken|default('') }}');
                 });
             });
-    </script>
+        </script>
     {% endblock %}
 {% endblock %}
