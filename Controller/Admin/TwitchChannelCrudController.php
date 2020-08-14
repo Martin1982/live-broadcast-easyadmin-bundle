@@ -6,8 +6,8 @@
 namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore;
+use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
@@ -29,13 +29,13 @@ class TwitchChannelCrudController extends AbstractCrudController
     }
 
     /**
-     * Configure rediret actions for the index
+     * Index action
      *
-     * @param Actions $actions
+     * @param AdminContext $context
      *
-     * @return Actions
+     * @return KeyValueStore|\Symfony\Component\HttpFoundation\Response|void
      */
-    public function configureActions(Actions $actions): Actions
+    public function index(AdminContext $context)
     {
         /** @var CrudUrlGenerator $crudUrlGenerator */
         $crudUrlGenerator = $this->get(CrudUrlGenerator::class);
@@ -44,12 +44,7 @@ class TwitchChannelCrudController extends AbstractCrudController
             ->setAction(Action::INDEX)
             ->generateUrl();
 
-        $channelIndexAction = Action::new('channel_index_action', 'Channel index')
-            ->linkToUrl($channelIndexUrl);
-
-        $actions->add(Crud::PAGE_INDEX, $channelIndexAction);
-
-        return parent::configureActions($actions);
+        return $this->redirect($channelIndexUrl);
     }
 
     /**
