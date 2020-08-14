@@ -9,6 +9,7 @@ namespace Martin1982\LiveBroadcastEasyadminBundle\DependencyInjection\Loader\Con
 
 use Martin1982\LiveBroadcastEasyadminBundle\Controller\AuthCallback\FacebookController;
 use Martin1982\LiveBroadcastEasyadminBundle\Form\Type\FacebookConnectType;
+use Martin1982\LiveBroadcastEasyadminBundle\Form\Type\YouTubeConnectType;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Reference;
 
@@ -27,6 +28,9 @@ return static function (ContainerConfigurator $container) {
 
     $services->set(FacebookConnectType::class)
         ->arg('$facebookAppId', '%env(FACEBOOK_APP_ID)%');
+
+    $services->set(YouTubeConnectType::class)
+        ->arg('$googleClient', new Reference('live.broadcast.channel_api.client.google'));
 
     $services->set(FacebookController::class)
         ->arg('$facebookApi', new Reference('live.broadcast.facebook_api.service'));
