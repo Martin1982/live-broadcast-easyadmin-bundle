@@ -157,24 +157,24 @@
 {% endblock %}
 
 {% block you_tube_connect_row %}
-    <div class="box box-primary">
-        <div class="box-header">
-            <h4 class="box-title">YouTube Login</h4>
-            <p id="yt-status">Login with YouTube and choose from your available YouTube channels.</p>
+    <div class="form-group">
+        <label for="fb-login-btn">Connect</label>
+        <div class="form-widget">
+            {% if isAuthenticated %}
+                <p>Your current YouTube channel selection is: <strong>{{ youTubeChannelName|default('') }}</strong></p>
+                <p><button class="btn btn-warning broadcast-youtube-switch">Switch to another YouTube channel/account</button></p>
+                <p><button class="btn btn-primary broadcast-youtube-attach">Attach this YouTube channel/account</button></p>
+            {% else %}
+                <a href="{{ authUrl|default('#') }}" id="yt-login"><i class="fa fa-youtube-play" style="color: #cd201f;"></i>&nbsp;Login with YouTube</a>
+            {% endif %}
         </div>
-        <div class="box-body">
-            <div class="sonata-ba-collapsed-fields">
-                <div class="form-group">
-                    {% if isAuthenticated %}
-                        <p>Your current YouTube channel selection is: <strong>{{ youTubeChannelName|default('') }}</strong></p>
-                        <p><button class="btn btn-warning broadcast-youtube-switch">Switch to another YouTube channel/account</button></p>
-                        <p><button class="btn btn-primary broadcast-youtube-attach">Attach this YouTube channel/account</button></p>
-                    {% else %}
-                        <a href="{{ authUrl|default('#') }}" id="yt-login"><i class="fa fa-youtube-play" style="color: #cd201f;"></i>&nbsp;Login with YouTube</a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
+    </div>
+    <div class="form-group">
+        <span id="yt-status">Login with YouTube and choose from your available YouTube channels.</span>
+    </div>
+    {{ form_row(form.youTubeChannelName) }}
+
+    {% block you_tube_js %}
         <script type="text/javascript">
             $(document).ready(function(){
                 $('.broadcast-youtube-switch').on('click', function(e){
@@ -187,6 +187,6 @@
                     $('.input-yt-refreshtoken').attr('value', '{{ youTubeRefreshToken|default('') }}');
                 });
             });
-        </script>
-    </div>
+    </script>
+    {% endblock %}
 {% endblock %}

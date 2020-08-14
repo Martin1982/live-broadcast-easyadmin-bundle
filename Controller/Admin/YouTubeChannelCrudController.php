@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\HiddenField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
 use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelYouTube;
@@ -60,10 +61,9 @@ class YouTubeChannelCrudController extends AbstractCrudController
     {
         if (Action::NEW === $pageName || Action::EDIT === $pageName) {
             return [
-                yield TextField::new('channelName'),
-                yield YouTubeConnectField::new('refreshToken'),
-                yield TextField::new('youTubeChannelName')
-                    ->setFormTypeOption('disabled', true),
+                YouTubeConnectField::new('youTubeChannelName'),
+                TextField::new('channelName'),
+                HiddenField::new('refreshToken'),
             ];
         }
 
