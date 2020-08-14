@@ -57,4 +57,14 @@ class FacebookConnectType extends TextType
         parent::configureOptions($resolver);
         $resolver->setDefault('facebook_app_id', $this->facebookAppid);
     }
+
+    /**
+     * Get block prefix name
+     *
+     * @return string|null
+     */
+    public function getBlockPrefix(): string
+    {
+        return 'facebook_connect';
+    }
 }

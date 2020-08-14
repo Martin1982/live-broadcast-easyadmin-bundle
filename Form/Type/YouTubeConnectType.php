@@ -46,4 +46,14 @@ class YouTubeConnectType extends TextType
         $resolver->setDefault('auth_url', '');
         $resolver->setDefault('you_tube_refresh_token', '');
     }
+
+    /**
+     * Get block prefix name
+     *
+     * @return string|null
+     */
+    public function getBlockPrefix(): string
+    {
+        return 'you_tube_connect';
+    }
 }
