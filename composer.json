@@ -14,7 +14,8 @@
         "ext-fileinfo": "*",
         "easycorp/easyadmin-bundle": "^3.0",
         "martin1982/live-broadcast-bundle": "^4.0",
-        "symfony/framework-bundle": "^4.4|^5.0"
+        "symfony/framework-bundle": "^4.4|^5.0",
+        "symfony/mime": "^5.1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
