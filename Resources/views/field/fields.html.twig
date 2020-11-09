@@ -183,8 +183,9 @@
                 });
                 $('.broadcast-youtube-attach').on('click', function(e){
                     e.preventDefault();
-                    $('.input-yt-channelname').attr('value', '{{ youTubeChannelName|default('') }}');
-                    $('.input-yt-refreshtoken').attr('value', '{{ youTubeRefreshToken|default('') }}');
+                    $('#ChannelYouTube_youTubeChannelName').attr('value', '{{ youTubeChannelName|default('') }}');
+                    $('#ChannelYouTube_channelName').attr('value', '{{ youTubeChannelName|default('') }}');
+                    $('#ChannelYouTube_refreshToken').attr('value', '{{ youTubeRefreshToken|default('') }}');
                 });
             });
         </script>
