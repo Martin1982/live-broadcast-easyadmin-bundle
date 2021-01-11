@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.2|>=8.0",
         "ext-fileinfo": "*",
         "easycorp/easyadmin-bundle": "^3.0",
         "martin1982/live-broadcast-bundle": "^4.1",
