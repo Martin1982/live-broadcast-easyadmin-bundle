@@ -10,10 +10,10 @@
         }
     ],
     "require": {
-        "php": ">=7.2|>=8.0",
+        "php": ">=7.4|>=8.0",
         "ext-fileinfo": "*",
         "easycorp/easyadmin-bundle": "^3.0",
-        "martin1982/live-broadcast-bundle": "^4.1",
+        "martin1982/live-broadcast-bundle": "^5.0",
         "symfony/framework-bundle": "^4.4|^5.0",
         "symfony/mime": "^5.1"
     },
