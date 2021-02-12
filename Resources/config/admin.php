@@ -22,7 +22,7 @@ return static function (ContainerConfigurator $container) {
         ->autoconfigure();
 
     $services->load('Martin1982\\LiveBroadcastEasyadminBundle\\', '../../*')
-        ->exclude('../../{DependencyInjection,Entity,Tests,Resources,LiveBroadcastEasyadminBundle.php}');
+        ->exclude('../../{vendor,DependencyInjection,Deprecated,Entity,Tests,Resources,LiveBroadcastEasyadminBundle.php}');
 
     $services->load('Martin1982\\LiveBroadcastEasyadminBundle\\Controller\\', '../../Controller')
         ->tag('controller.service_arguments');
