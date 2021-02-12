@@ -9,7 +9,9 @@ namespace Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-use Martin1982\LiveBroadcastBundle\Entity\Channel\AbstractChannel;
+use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelFacebook;
+use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelTwitch;
+use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelYouTube;
 use Martin1982\LiveBroadcastBundle\Entity\LiveBroadcast;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,8 +51,16 @@ class DashboardController extends AbstractDashboardController
      */
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Broadcast planning', 'fa fa-calendar', LiveBroadcast::class);
-        yield MenuItem::linkToCrud('Channel configuration', 'fa fa-cogs', AbstractChannel::class);
+        return [
+            MenuItem::linktoDashboard('Dashboard', 'fa fa-home'),
+
+            MenuItem::section('Broadcasts'),
+            MenuItem::linkToCrud('Broadcast planning', 'fa fa-calendar', LiveBroadcast::class),
+
+            MenuItem::section('Channels'),
+            MenuItem::linkToCrud('Twitch channels', 'fab fa-twitch', ChannelTwitch::class),
+            MenuItem::linkToCrud('Facebook channels', 'fab fa-facebook', ChannelFacebook::class),
+            MenuItem::linkToCrud('YouTube channels', 'fab fa-youtube', ChannelYouTube::class),
+        ];
     }
 }
