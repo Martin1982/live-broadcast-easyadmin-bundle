@@ -26,5 +26,4 @@ class LiveBroadcastEasyadminExtension extends Extension
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('admin.php');
     }
-
 }
