@@ -1,7 +1,6 @@
 # Live Broadcast Bundle
 
 [![Build status](https://github.com/martin1982/live-broadcast-easyadmin-bundle/workflows/Static%20analysis%20of%20live-broadcast-easyadmin-bundle/badge.svg)](https://github.com/martin1982/live-broadcast-easyadmin-bundle/workflows/Static%20analysis%20of%20live-broadcast-easyadmin-bundle/badge.svg)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/6027a50f-06cf-4989-8267-9f481e838b2a/mini.png)](https://insight.sensiolabs.com/projects/6027a50f-06cf-4989-8267-9f481e838b2a)
 
 [![Latest stable version](https://poser.pugx.org/martin1982/live-broadcast-bundle/v/stable)](https://packagist.org/packages/martin1982/live-broadcast-bundle)
 [![Latest unstable version](https://poser.pugx.org/martin1982/live-broadcast-bundle/v/unstable)](https://packagist.org/packages/martin1982/live-broadcast-bundle)
