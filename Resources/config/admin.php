@@ -7,6 +7,7 @@ declare(strict_types=1);
  */
 namespace Martin1982\LiveBroadcastEasyadminBundle\DependencyInjection\Loader\Configurator;
 
+use Martin1982\LiveBroadcastEasyadminBundle\Controller\Admin\Crud\LiveBroadcastCrudController;
 use Martin1982\LiveBroadcastEasyadminBundle\Controller\AuthCallback\FacebookController;
 use Martin1982\LiveBroadcastEasyadminBundle\Controller\AuthCallback\YouTubeController;
 use Martin1982\LiveBroadcastEasyadminBundle\Form\Type\FacebookConnectType;
@@ -38,4 +39,7 @@ return static function (ContainerConfigurator $container) {
 
     $services->set(YouTubeController::class)
         ->arg('$youTubeApi', new Reference('live.broadcast.channel_api.client.google'));
+
+    $services->set(LiveBroadcastCrudController::class)
+        ->arg('$uploadPath', '%livebroadcast.thumbnail.upload_directory%');
 };
