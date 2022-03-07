@@ -68,7 +68,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::section('Inputs'),
             MenuItem::linkToCrud('Files', 'fa fa-file', MediaFile::class),
             MenuItem::linkToCrud('URLs', 'fa fa-globe', MediaUrl::class),
-            MenuItem::linkToCrud('Streams', 'fa fa-signal-stream', MediaRtmp::class),
+            MenuItem::linkToCrud('Streams', 'fa fa-signal', MediaRtmp::class),
         ];
     }
 }
