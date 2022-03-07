@@ -13,6 +13,9 @@ use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelFacebook;
 use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelTwitch;
 use Martin1982\LiveBroadcastBundle\Entity\Channel\ChannelYouTube;
 use Martin1982\LiveBroadcastBundle\Entity\LiveBroadcast;
+use Martin1982\LiveBroadcastBundle\Entity\Media\MediaFile;
+use Martin1982\LiveBroadcastBundle\Entity\Media\MediaRtmp;
+use Martin1982\LiveBroadcastBundle\Entity\Media\MediaUrl;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -61,6 +64,11 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Twitch channels', 'fab fa-twitch', ChannelTwitch::class),
             MenuItem::linkToCrud('Facebook channels', 'fab fa-facebook', ChannelFacebook::class),
             MenuItem::linkToCrud('YouTube channels', 'fab fa-youtube', ChannelYouTube::class),
+
+            MenuItem::section('Inputs'),
+            MenuItem::linkToCrud('Files', 'fa fa-file', MediaFile::class),
+            MenuItem::linkToCrud('URLs', 'fa fa-globe', MediaUrl::class),
+            MenuItem::linkToCrud('Streams', 'fa fa-signal-stream', MediaRtmp::class),
         ];
     }
 }
