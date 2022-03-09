@@ -46,10 +46,16 @@ class ChannelYouTubeCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('channelName'),
-            YouTubeConnectField::new('youTubeChannelName')->hideOnIndex(),
-            HiddenField::new('refreshToken')->hideOnIndex(),
-            BooleanField::new('isHealthy')->renderAsSwitch(false)->hideOnForm(),
+            TextField::new('channelName')
+                ->setLabel('Internal Channel Name'),
+            YouTubeConnectField::new('youTubeChannelName')
+                ->hideOnIndex()
+                ->setLabel('YouTube Channel Name'),
+            HiddenField::new('refreshToken')
+                ->hideOnIndex(),
+            BooleanField::new('isHealthy')
+                ->renderAsSwitch(false)
+                ->hideOnForm(),
         ];
     }
 
