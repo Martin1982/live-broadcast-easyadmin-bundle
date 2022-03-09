@@ -6,6 +6,7 @@
 namespace Martin1982\LiveBroadcastEasyadminBundle\Form\Type;
 
 use Martin1982\LiveBroadcastBundle\Exception\LiveBroadcastException;
+use Martin1982\LiveBroadcastBundle\Exception\LiveBroadcastOutputException;
 use Martin1982\LiveBroadcastBundle\Service\ChannelApi\Client\GoogleClient;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormInterface;
@@ -22,12 +23,12 @@ class YouTubeConnectType extends TextType
     /**
      * @var GoogleClient
      */
-    protected $googleClient;
+    protected GoogleClient $googleClient;
 
     /**
      * @var RequestStack
      */
-    protected $requestStack;
+    protected RequestStack $requestStack;
 
     /**
      * YouTubeConnectType constructor.
@@ -49,6 +50,8 @@ class YouTubeConnectType extends TextType
      * @param array         $options
      *
      * @return void
+     * @throws LiveBroadcastException
+     * @throws LiveBroadcastOutputException
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
@@ -63,7 +66,7 @@ class YouTubeConnectType extends TextType
         }
 
         $session = $request->getSession();
-        if (!$session) {
+        if (!$session->isStarted()) {
             $request->setSession(new Session());
         }
 

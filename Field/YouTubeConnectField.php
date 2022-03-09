@@ -24,7 +24,7 @@ class YouTubeConnectField implements FieldInterface
      *
      * @return YouTubeConnectField
      */
-    public static function new(string $propertyName, ?string $label = null)
+    public static function new(string $propertyName, ?string $label = null): YouTubeConnectField
     {
         return (new self())
             ->setProperty($propertyName)
