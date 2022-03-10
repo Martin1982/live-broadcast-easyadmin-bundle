@@ -13,7 +13,7 @@
         "php": ">=7.4|>=8.0",
         "ext-fileinfo": "*",
         "easycorp/easyadmin-bundle": "^3.0|^4.0",
-        "martin1982/live-broadcast-bundle": "^6.0",
+        "martin1982/live-broadcast-bundle": "dev-master",
         "symfony/framework-bundle": "^4.4|^5.4|^6.0",
         "symfony/mime": "^4.4|^5.4|^6.0"
     },
