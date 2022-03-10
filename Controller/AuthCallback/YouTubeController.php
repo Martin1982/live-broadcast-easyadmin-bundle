@@ -23,7 +23,7 @@ class YouTubeController extends AbstractController
     /**
      * @var GoogleClient
      */
-    protected $clientService;
+    protected GoogleClient $clientService;
 
     /**
      * YouTubeController constructor.
@@ -38,7 +38,7 @@ class YouTubeController extends AbstractController
     /**
      * Callback for authorization
      *
-     * @Route("/admin/channel/youtube/oauthprovider", name="admin_martin1982_livebroadcast_channel_abstractchannel_youtubeoauth")
+     * @Route("/admin/channel/youtube/oauthprovider", name="martin1982_livebroadcast_admin_youtubeoauth")
      *
      * @param Request $request
      *
@@ -50,12 +50,12 @@ class YouTubeController extends AbstractController
     {
         $session = $request->getSession();
 
-        if ($session && $request->get('cleartoken')) {
+        if ($request->get('cleartoken')) {
             $this->clearToken($session);
         }
 
         $requestCode = $request->get('code');
-        if ($requestCode && $session) {
+        if ($requestCode) {
             $this->checkRequestCode($request, $session);
         }
 

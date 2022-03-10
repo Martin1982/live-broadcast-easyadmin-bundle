@@ -13,7 +13,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Class YouTubeConnectType
@@ -50,15 +49,13 @@ class YouTubeConnectType extends TextType
      * @param array         $options
      *
      * @return void
+     *
      * @throws LiveBroadcastException
      * @throws LiveBroadcastOutputException
      */
-    public function buildView(FormView $view, FormInterface $form, array $options)
+    public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         $client = $this->googleClient->getClient();
-        if (!$client instanceof \Google_Client) {
-            throw new LiveBroadcastException('Could not load the google client');
-        }
 
         $request = $this->requestStack->getCurrentRequest();
         if (!$request) {
@@ -66,10 +63,6 @@ class YouTubeConnectType extends TextType
         }
 
         $session = $request->getSession();
-        if (!$session->isStarted()) {
-            $request->setSession(new Session());
-        }
-
         $refreshToken = $session->get('youTubeRefreshToken');
         if ($refreshToken) {
             $client->fetchAccessTokenWithRefreshToken($refreshToken);
