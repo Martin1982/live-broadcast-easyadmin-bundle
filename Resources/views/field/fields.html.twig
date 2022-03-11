@@ -179,18 +179,18 @@
 
         {% block you_tube_js %}
             <script type="text/javascript">
-                $(document).ready(function(){
-                    $('.broadcast-youtube-switch').on('click', function(e){
+                (function() {
+                    document.querySelector('.broadcast-youtube-switch').addEventListener('click', function (e) {
                         e.preventDefault();
-                        window.location.href = '{#  @todo path('admin_martin1982_livebroadcast_channel_abstractchannel_youtubeoauth', {'cleartoken': '1'}) #}';
+                        window.location.href = '{{ path('martin1982_livebroadcast_admin_youtubeoauth', {'cleartoken': '1'}) }}';
                     });
-                    $('.broadcast-youtube-attach').on('click', function(e){
+                    document.querySelector('.broadcast-youtube-attach').addEventListener('click', function (e) {
                         e.preventDefault();
-                        $('#ChannelYouTube_youTubeChannelName').attr('value', '{{ youTubeChannelName|default('') }}');
-                        $('#ChannelYouTube_channelName').attr('value', '{{ youTubeChannelName|default('') }}');
-                        $('#ChannelYouTube_refreshToken').attr('value', '{{ youTubeRefreshToken|default('') }}');
+                        document.getElementById('ChannelYouTube_youTubeChannelName').setAttribute('value', '{{ youTubeChannelName|default('') }}');
+                        document.getElementById('ChannelYouTube_channelName').setAttribute('value', '{{ youTubeChannelName|default('') }}');
+                        document.getElementById('ChannelYouTube_refreshToken').setAttribute('value', '{{ youTubeRefreshToken|default('') }}');
                     });
-                });
+                })();
             </script>
         {% endblock %}
     </div>
