@@ -180,16 +180,24 @@
         {% block you_tube_js %}
             <script type="text/javascript">
                 (function() {
-                    document.querySelector('.broadcast-youtube-switch').addEventListener('click', function (e) {
-                        e.preventDefault();
-                        window.location.href = '{{ path('martin1982_livebroadcast_admin_youtubeoauth', {'cleartoken': '1'}) }}';
-                    });
-                    document.querySelector('.broadcast-youtube-attach').addEventListener('click', function (e) {
-                        e.preventDefault();
-                        document.getElementById('ChannelYouTube_youTubeChannelName').setAttribute('value', '{{ youTubeChannelName|default('') }}');
-                        document.getElementById('ChannelYouTube_channelName').setAttribute('value', '{{ youTubeChannelName|default('') }}');
-                        document.getElementById('ChannelYouTube_refreshToken').setAttribute('value', '{{ youTubeRefreshToken|default('') }}');
-                    });
+                    const switchButton = document.querySelector('.broadcast-youtube-switch');
+                    const attachButton = document.querySelector('.broadcast-youtube-attach');
+
+                    if (switchButton) {
+                        switchButton.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            window.location.href = '{{ path('martin1982_livebroadcast_admin_youtubeoauth', {'cleartoken': '1'}) }}';
+                        });
+                    }
+
+                    if (attachButton) {
+                        attachButton.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            document.getElementById('ChannelYouTube_youTubeChannelName').setAttribute('value', '{{ youTubeChannelName|default('') }}');
+                            document.getElementById('ChannelYouTube_channelName').setAttribute('value', '{{ youTubeChannelName|default('') }}');
+                            document.getElementById('ChannelYouTube_refreshToken').setAttribute('value', '{{ youTubeRefreshToken|default('') }}');
+                        });
+                    }
                 })();
             </script>
         {% endblock %}
