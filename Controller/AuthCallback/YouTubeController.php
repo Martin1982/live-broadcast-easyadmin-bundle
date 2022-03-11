@@ -38,7 +38,7 @@ class YouTubeController extends AbstractController
     /**
      * Callback for authorization
      *
-     * @Route("/martin1982/channel/youtube/oauthprovider", name="martin1982_livebroadcast_youtubeoauth")
+     * @Route("/martin1982/channel/youtube/oauthprovider", name="martin1982_livebroadcast_admin_youtubeoauth")
      *
      * @param Request $request
      *
